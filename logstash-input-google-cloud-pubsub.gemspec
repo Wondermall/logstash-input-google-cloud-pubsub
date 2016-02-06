@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
 
   # Gem dependencies
   s.add_runtime_dependency "logstash-core", ">= 2.0.0", "< 3.0.0"
-  s.add_runtime_dependency 'gcloud'
+  s.add_runtime_dependency 'gcloud', '< 0.6'
   s.add_runtime_dependency 'stud', '>= 0.0.22'
   s.add_development_dependency 'logstash-devutils', '>= 0.0.16'
 end
