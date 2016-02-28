@@ -58,6 +58,12 @@ gem "logstash-filter-awesome", :path => "/your/local/logstash-filter-awesome"
 ```sh
 bin/plugin install --no-verify
 ```
+
+Install plugin on top logstash 2.2.2.
+Logstash bundles jruby 1.7 which is not ruby 2.0 compatible and the gcloud gem starting at version 0.6 requires at least ruby 2.0 which makes this plugin fail during installation.
+see:
+https://github.com/Wondermall/logstash-input-google-cloud-pubsub/pull/2
+
 - Run Logstash with your plugin
 ```sh
 bin/logstash -e 'filter {awesome {}}'
