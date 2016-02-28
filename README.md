@@ -48,6 +48,20 @@ bundle exec rspec
 
 ### 2. Running your unpublished Plugin in Logstash
 
+**NOTE**: This plugin uses gcloud gem which requieres Ruby >= 2.0, however Logstash still compatable with Ruby 1.9.3. The solution is to invoke Logstash with Ruby 2.0 compatability enabled like follows:
+
+```
+ENV GEM_HOME=/opt/logstash/vendor/bundle/jruby/1.9 
+/opt/logstash/vendor/jruby/bin/jruby /opt/logstash/vendor/jruby/bin/gem install ruby-maven
+/opt/logstash/vendor/jruby/bin/jruby /opt/logstash/vendor/jruby/bin/gem install jruby-kafka -v '1.5.0'
+/opt/logstash/vendor/jruby/bin/jruby /opt/logstash/vendor/jruby/bin/gem install manticore -v '0.5.2'
+
+cd /opt/logstash && JRUBY_OPTS=--2.0 bin/plugin install --no-verify logstash-input-google-cloud-pubsub
+```
+
+For more details please see the relevant [issue](https://github.com/Wondermall/logstash-input-google-cloud-pubsub/pull/2).
+
+
 #### 2.1 Run in a local Logstash clone
 
 - Edit Logstash `Gemfile` and add the local plugin path, for example:
@@ -78,12 +92,6 @@ gem build logstash-filter-awesome.gemspec
 bin/plugin install /your/local/plugin/logstash-filter-awesome.gem
 ```
 - Start Logstash and proceed to test the plugin
-
-#####Install plugin on top of Logstash 2.2.2.
-
-Logstash bundles jruby 1.7 which is not ruby 2.0 compatible and the gcloud gem starting at version 0.6 requires at least ruby 2.0 which makes this plugin fail during installation.
-see:
-https://github.com/Wondermall/logstash-input-google-cloud-pubsub/pull/2
 
 ## Contributing
 
