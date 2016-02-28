@@ -79,7 +79,7 @@ bin/plugin install /your/local/plugin/logstash-filter-awesome.gem
 ```
 - Start Logstash and proceed to test the plugin
 
-#####Install plugin on top logstash 2.2.2.
+#####Install plugin on top of Logstash 2.2.2.
 
 Logstash bundles jruby 1.7 which is not ruby 2.0 compatible and the gcloud gem starting at version 0.6 requires at least ruby 2.0 which makes this plugin fail during installation.
 see:
